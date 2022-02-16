@@ -1,10 +1,10 @@
-const mousemove = Rx.Observable.fromEvent(document, 'mousemove')
+const clicks = Rx.Observable.fromEvent(document, 'click')
 
 
 
-mousemove
-.throttleTime(1000) // Si comento esta linea veremos que se emiten miles de eventos
-.subscribe(e => print(e.type))
+clicks
+.switchMap((click=> Rx.Observable.interval(500)))
+.subscribe(e => print(e))
 
 
 function print(val) {
