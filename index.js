@@ -1,12 +1,15 @@
-const deTodo = Rx.Observable.of(
-    'string',
-    ['1', 2, '2'],
-    23,
-    true,
-    {nombre:'Juan', apellido: 'Pardo'}
-)
+// Cold Observable
+// El dato se crea cuando alguien se subscribe, se crea desde dentro
+// del observable.
 
-deTodo.subscribe(val => print(val))
+const cold = Rx.Observable.create( observer =>{
+    observer.next(Math.random())
+})
+
+cold.subscribe((res)=> print(res))
+cold.subscribe((res)=> print(res))
+
+// El resultado cambia porque el dato se ha creado desde dentro
 
 
 function print(val) {
