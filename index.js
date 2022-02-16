@@ -3,7 +3,9 @@ const interval = Rx.Observable.interval(1000)
 
 // Esto es una subscripción.
 const subscription = interval
-.map(num => num * 2) // El método map transforma el dato
+.do(data => console.log(data)) // El método do es como el log en un momento en concreto del flujo
+.map(d => d*2)
+.do(data =>console.log(data))
 .subscribe((r)=> print(r))
 
 
