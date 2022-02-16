@@ -1,10 +1,16 @@
-const clicks = Rx.Observable.fromEvent(document, 'click')
+const observable = Rx.Observable.create(observer =>{
+    observer.next('1')
+    observer.next('2')
+    observer.next('3')
 
+    throw 'error'
 
+    observer.next('4')
+})
 
-clicks
-.switchMap((click=> Rx.Observable.interval(500)))
-.subscribe(e => print(e))
+observable
+    .catch(err=>print(err))
+    .subscribe(res => print(res))
 
 
 function print(val) {
