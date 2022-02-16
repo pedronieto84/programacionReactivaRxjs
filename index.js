@@ -10,6 +10,7 @@ const observable = Rx.Observable.create(observer =>{
 
 observable
     .catch(err=>print(err))
+    .retry(3) // Digo cuantas veces quiero retry si veo un error
     .subscribe(res => print(res))
 
 
