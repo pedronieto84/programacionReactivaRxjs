@@ -1,11 +1,8 @@
-// Si no me subscribo, no ocurre nada
+const timer = Rx.Observable.timer(1000)
 
-const x = Math.random()
-const cold = Rx.Observable.create( observer =>{
-    observer.next(x)
-})
-
-// cold.subscribe((data)=>print(data))
+timer
+.finally(()=> print('finally'))
+.subscribe(()=> print('subscribe'))
 
 function print(val) {
     let el = document.createElement('p')
