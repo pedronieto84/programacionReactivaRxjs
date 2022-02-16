@@ -1,12 +1,15 @@
-const interval = Rx.Observable.interval(1000)
+const interval = Rx.Observable.of(1,2,3,4)
 
 
-// Esto es una subscripción.
-const subscription = interval
-.filter(data => data > 2) 
+// First devuelve el primero.
+const subscriptionFirst = interval
+.first() 
 .subscribe((r)=> print(r))
 
-
+// Devuelve el último
+const subscriptionLast = interval
+.last() 
+.subscribe((r)=> print(r))
 
 function print(val) {
     let el = document.createElement('p')
