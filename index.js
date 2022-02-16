@@ -1,11 +1,24 @@
-// Me aseguro de que he importado la libreria y la logueo
-console.log(Rx);
+const promise = new Promise((res,rej)=>{
+    setTimeout(()=>{
+        res('Resuelta')
+    }, 1000)
+})
 
-// Observable que reacciona a clicks
-const clicks = Rx.Observable.fromEvent(document, 'click')
+// Llamo al método fromPromise para convertir una promesa en observable
+const observableDesdePromesa = Rx.Observable.fromPromise(promise)
 
 // Me subscribo al observable
-clicks.subscribe((click)=>{
-    console.log(click);
+observableDesdePromesa.subscribe((res)=>{
+    print(res)
 })
+
+
+// Para convertir un observable a promesa
+// observable.toPromise() -> Devuelve una promesa
+
+function print(val) {
+    let el = document.createElement('p')
+    el.innerText = val
+    document.body.appendChild(el)
+}
 
