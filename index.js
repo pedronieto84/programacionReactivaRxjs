@@ -1,15 +1,11 @@
-const interval = Rx.Observable.of(1,2,3,4)
+const mousemove = Rx.Observable.fromEvent(document, 'mousemove')
 
 
-// First devuelve el primero.
-const subscriptionFirst = interval
-.first() 
-.subscribe((r)=> print(r))
 
-// Devuelve el último
-const subscriptionLast = interval
-.last() 
-.subscribe((r)=> print(r))
+mousemove
+.throttleTime(1000) // Si comento esta linea veremos que se emiten miles de eventos
+.subscribe(e => print(e.type))
+
 
 function print(val) {
     let el = document.createElement('p')
