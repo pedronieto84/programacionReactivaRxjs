@@ -1,18 +1,9 @@
-const observable = Rx.Observable.create(observer =>{
-    observer.next('1')
-    observer.next('2')
-    observer.next('3')
+const subject = Rx.Subject.of('hello')
 
-    throw 'error'
+const subA = subject.subscribe(val => print(`Sub A: ${val}`))
+const subB = subject.subscribe(val => print(`Sub B: ${val}`))
 
-    observer.next('4')
-})
-
-observable
-    .catch(err=>print(err))
-    .retry(3) // Digo cuantas veces quiero retry si veo un error
-    .subscribe(res => print(res))
-
+// Hasta aquí nada nuevo
 
 function print(val) {
     let el = document.createElement('p')
