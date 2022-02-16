@@ -1,17 +1,11 @@
-// Hot Observable
-// El dato se crea cuando alguien se subscribe, se crea desde dentro
-// del observable.
+// Si no me subscribo, no ocurre nada
 
 const x = Math.random()
 const cold = Rx.Observable.create( observer =>{
     observer.next(x)
 })
 
-cold.subscribe((res)=> print(res))
-cold.subscribe((res)=> print(res))
-
-// El resultado no cambia porque el dato se ha creado desde fuera
-
+// cold.subscribe((data)=>print(data))
 
 function print(val) {
     let el = document.createElement('p')
